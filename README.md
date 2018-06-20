@@ -3,7 +3,7 @@ CIDNN: Encoding Crowd Interaction with Deep Neural Network
 
 This repo is the official open source of CIDNN, CVPR 2018 by Yanyu Xu, Zhixin Piao and Shenghua Gao. 
 
-[](img/architecture.png)
+![architecture](img/architecture.png)
 
 It is implemented in Pytorch and Python 2.7.x.
 
