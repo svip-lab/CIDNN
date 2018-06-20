@@ -1,4 +1,4 @@
-# CIDNN
+# CIDNN 
 CIDNN: Encoding Crowd Interaction with Deep Neural Network 
 
 This repo is the official open source of CIDNN, CVPR 2018 by Yanyu Xu, Zhixin Piao and Shenghua Gao. 
