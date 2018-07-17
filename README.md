@@ -32,7 +32,7 @@ If you find this useful, please cite our work as follows:
 
 **GC Dataset Description:**
 
-```
+```reStructuredText
 1. This dataset contains two folders, naming ‘Annotation’ and ‘Frame’, respectively.
 
 2. The ‘Annotation’ folder contains the manually labeled walking paths of 12,684 pedestrians. Annotations are named as ‘XXXXXX.txt’. ‘XXXXXX’ is pedestrian index.
