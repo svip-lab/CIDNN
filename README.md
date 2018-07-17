@@ -32,15 +32,13 @@ If you find this useful, please cite our work as follows:
 
 **GC Dataset Description:**
 
-```reStructuredText
-1. This dataset contains two folders, naming ‘Annotation’ and ‘Frame’, respectively.
-
-2. The ‘Annotation’ folder contains the manually labeled walking paths of 12,684 pedestrians. Annotations are named as ‘XXXXXX.txt’. ‘XXXXXX’ is pedestrian index.
-
-3. For each of the annotation txt file. It contains multiple integers, corresponding to the (x,y,t)s of the current pedestrian. ‘x’ and ‘y’ are point coordinates and ‘t’ is frame index. There should be 3N integers if this pedestrian appears in N frames. All pedestrians within Frame 000000 to 100000 are labeled from the time point he(she) arrives to the time point he(she) leaves.
-
-4. The ‘Frame’ folder contains 6001 frames sampled from a surveillance video captured at the Grand Central Train Station of New York. These frames are named as ‘XXXXXX.jpg’. ‘XXXXXX’ is frame index. It starts from ‘000000’ and ends at ‘120000’. One frame is sampled every 20 frames from the surveillance video clip.
-```
+> 1. This dataset contains two folders, naming ‘Annotation’ and ‘Frame’, respectively.
+>
+> 2. The ‘Annotation’ folder contains the manually labeled walking paths of 12,684 pedestrians. Annotations are named as ‘XXXXXX.txt’. ‘XXXXXX’ is pedestrian index.
+>
+> 3. For each of the annotation txt file. It contains multiple integers, corresponding to the (x,y,t)s of the current pedestrian. ‘x’ and ‘y’ are point coordinates and ‘t’ is frame index. There should be 3N integers if this pedestrian appears in N frames. All pedestrians within Frame 000000 to 100000 are labeled from the time point he(she) arrives to the time point he(she) leaves.
+>
+> 4. The ‘Frame’ folder contains 6001 frames sampled from a surveillance video captured at the Grand Central Train Station of New York. These frames are named as ‘XXXXXX.jpg’. ‘XXXXXX’ is frame index. It starts from ‘000000’ and ends at ‘120000’. One frame is sampled every 20 frames from the surveillance video clip.
 
 
 
