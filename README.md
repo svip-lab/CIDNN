@@ -28,7 +28,7 @@ If you find this useful, please cite our work as follows:
 |   CUHK Crowd [4]   | [website](http://www.ee.cuhk.edu.hk/~jshao/projects/CUHKcrowd_files/cuhk_crowd_dataset.htm) |
 | subway station [5] | [website](http://www.ee.cuhk.edu.hk/~xgwang/grandcentral.html) |
 
-**Update 2019.07.17**: Because the website of GC Dataset has been deleted, we give the download link and decription of it.
+**Update 2019.07.17**: Because the website of GC Dataset has been deleted, here we give the download link and decription of it.
 
 **GC Dataset Description:**
 
