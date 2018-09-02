@@ -36,12 +36,12 @@ class Model:
         # learn
         self.lr = 2e-3
         self.weight_decay = 5e-3
-        self.batch_size = 1000
+        self.batch_size = 256
         self.n_epochs = 10000
         self.test_interval = 5
 
         # show
-        self.vis = visdom.Visdom('http://admin', port=31070, env='GC')
+        self.vis = visdom.Visdom('http://admin', port=31070, env='GC256')
         self.train_loss_list = []
         self.test_loss_list = []
         self.time_window = 300

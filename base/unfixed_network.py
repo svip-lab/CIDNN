@@ -9,18 +9,10 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader, Dataset
 import torch.utils.data
 import torchvision
-import cPickle as pickle
-from torch.autograd import Variable
 from torch import optim
 
 import numpy as np
 import os
-
-import matplotlib
-
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 
 
 class TraceDataSet(Dataset):
@@ -43,7 +35,6 @@ class UnfixedAttention(nn.Module):
         super(UnfixedAttention, self).__init__()
 
     def forward(self, input_hidden_traces, target_hidden_traces, hidden_mask):
-
         # print input_hidden_traces.size()
         # print hidden_mask.size()
 
@@ -81,13 +72,12 @@ class UnfixedRegressionNet(nn.Module):
         batch_size = input_attn_hidden_traces.size(0)
 
         regression_list = []
-        for i in xrange(self.pedestrian_num):
+        for i in range(self.pedestrian_num):
             input_attn_hidden_trace = input_attn_hidden_traces[:, i]
             target_delta_trace = self.fc1(input_attn_hidden_trace)
 
             regression_list.append(target_delta_trace)
         regression_traces = torch.stack(regression_list, 1)
-
 
         mask_regression_traces = regression_traces * regression_mask
         regression_traces = mask_regression_traces + target_traces
