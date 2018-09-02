@@ -134,7 +134,7 @@ def create_GC_train_test_data(meta_data_path, train_test_data_path, random_seed=
 
 
 def main():
-    GC_raw_data_path = 'data/Annotation'
+    GC_raw_data_path = 'data/GC/Annotation'
     GC_meta_data_path = 'data/GC_meta_data.json'
     GC_train_test_data_path = 'data/GC.npz'
 

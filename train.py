@@ -34,7 +34,7 @@ class Model:
         self.window_size = 100
 
         # learn
-        self.lr = 2e-3
+        self.lr = 2e-6
         self.weight_decay = 5e-3
         self.batch_size = 256
         self.n_epochs = 10000
@@ -149,8 +149,9 @@ class Model:
         return MSE_loss_meter.avg, L2_square_loss_meter.avg
 
     def test(self):
-        L2_square_loss, MSE_loss, _ = self.main_compute_step(self.test_input_traces, self.test_target_traces)
-        return MSE_loss
+        with torch.no_grad():
+            L2_square_loss, MSE_loss, _ = self.main_compute_step(self.test_input_traces, self.test_target_traces)
+            return MSE_loss
 
     def run(self):
         self.init_net()

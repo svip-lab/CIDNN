@@ -5,7 +5,7 @@ This repo is the official open source of CIDNN, CVPR 2018 by Yanyu Xu, Zhixin Pi
 
 ![architecture](img/architecture.png)
 
-It is implemented in Pytorch and Python 2.7.x.
+It is implemented in Pytorch 0.4 and Python 3.x.
 
 If you find this useful, please cite our work as follows:
 
@@ -40,7 +40,29 @@ If you find this useful, please cite our work as follows:
 >
 > 4. The ‘Frame’ folder contains 6001 frames sampled from a surveillance video captured at the Grand Central Train Station of New York. These frames are named as ‘XXXXXX.jpg’. ‘XXXXXX’ is frame index. It starts from ‘000000’ and ends at ‘120000’. One frame is sampled every 20 frames from the surveillance video clip.
 
+##Pipeline
+1. download dataset and set it in `CIDNN/data` dir:
+```
+CIDNN/data/GC # for example, we use GC dataset
+```
+2. open `tools/create_dataset.py` and set data path:
+```
+GC_raw_data_path = 'data/GC/Annotation'
+GC_meta_data_path = 'data/GC_meta_data.json'
+GC_train_test_data_path = 'data/GC.npz'
+```
+where `GC_raw_data_path` is GC dataset we has downloaded, `GC_meta_data_path` is an intermediate file to help create `GC.npz`, which is final data we use for our network.
 
+3. build `GC.npz`:
+```
+cd CIDNN
+python tools/create_dataset.py
+```
+
+4. train CIDNN (all hyper-parameter in Class Model) and do whatever you want:
+```
+python train.py
+```
 
 ## Reference
 

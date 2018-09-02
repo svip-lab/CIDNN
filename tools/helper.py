@@ -26,7 +26,7 @@ class AverageMeter(object):
 
 
 def adjust_learning_rate(optimizers, init_lr, epoch):
-    lr = init_lr * (0.5 ** (epoch // 100))
+    lr = init_lr * (0.5 ** (epoch // 30))
 
     for optimizer in optimizers:
         for param_group in optimizer.param_groups:
