@@ -8,15 +8,15 @@ import scipy.io as sio
 import random
 import visdom
 import cv2
-import cPickle as pickle
+import pickle
 
 
 def create_noise_GC_dataset(src_data_path, dest_data_path, rate):
     def convert_to_noise_X(X):
         batch_size, p_num = X.shape[:2]
 
-        for i in xrange(batch_size):
-            for j in xrange(p_num):
+        for i in range(batch_size):
+            for j in range(p_num):
                 if is_noise():
                     X[i, j] = get_noise_trace(X[i, j])
 
@@ -46,14 +46,14 @@ def create_noise_GC_dataset(src_data_path, dest_data_path, rate):
     convert_to_noise_X(train_X)
     convert_to_noise_X(test_X)
 
-    print 'rate:', rate
-    print 'train_X:'
-    print 'dis**2 sum:', ((src_train_X - train_X) ** 2).sum()
-    print 'dis sum:', (src_train_X - train_X).sum()
+    print('rate:', rate)
+    print('train_X:')
+    print('dis**2 sum:', ((src_train_X - train_X) ** 2).sum())
+    print('dis sum:', (src_train_X - train_X).sum())
 
-    print 'test_X:'
-    print 'dis**2 sum:', ((src_test_X - test_X) ** 2).sum()
-    print 'dis sum:', (src_test_X - test_X).sum()
+    print('test_X:')
+    print('dis**2 sum:', ((src_test_X - test_X) ** 2).sum())
+    print('dis sum:', (src_test_X - test_X).sum())
 
     np.savez(dest_data_path, train_X=train_X, train_Y=train_Y, test_X=test_X, test_Y=test_Y)
 
@@ -89,15 +89,15 @@ def create_closed_GC_test_dataset(src_data_path, img_dir_path, dest_data_path, c
     BLUE = (0, 0, 255)
 
     # obs
-    for i in xrange(p_num):
-        for j in xrange(f_num):
+    for i in range(p_num):
+        for j in range(f_num):
             x, y = train_X[batch_idx, i, j]
             x, y = int(x * 1920), int(y * 1080)
             cv2.circle(img, (x, y), radius=3, color=BLUE, thickness=-1)
 
     # pred
-    for i in xrange(p_num):
-        for j in xrange(f_num):
+    for i in range(p_num):
+        for j in range(f_num):
             x, y = train_Y[batch_idx, i, j]
             x, y = int(x * 1920), int(y * 1080)
             cv2.circle(img, (x, y), radius=3, color=ORANGE, thickness=-1)
