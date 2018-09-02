@@ -34,7 +34,7 @@ class Model:
         self.window_size = 100
 
         # learn
-        self.lr = 2e-6
+        self.lr = 2e-3
         self.weight_decay = 5e-3
         self.batch_size = 256
         self.n_epochs = 10000

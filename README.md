@@ -40,7 +40,7 @@ If you find this useful, please cite our work as follows:
 >
 > 4. The ‘Frame’ folder contains 6001 frames sampled from a surveillance video captured at the Grand Central Train Station of New York. These frames are named as ‘XXXXXX.jpg’. ‘XXXXXX’ is frame index. It starts from ‘000000’ and ends at ‘120000’. One frame is sampled every 20 frames from the surveillance video clip.
 
-##Pipeline
+## Pipeline
 1. download dataset and set it in `CIDNN/data` dir:
 ```
 CIDNN/data/GC # for example, we use GC dataset
