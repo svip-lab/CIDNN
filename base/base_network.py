@@ -9,15 +9,7 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader, Dataset
 import torch.utils.data
 import torchvision
-import cPickle as pickle
-from torch.autograd import Variable
 from torch import optim
-
-import numpy as np
-import os
-import time
-import datetime
-import random
 
 import matplotlib
 
@@ -84,18 +76,11 @@ class EncoderNet(nn.Module):
         self.fc2 = torch.nn.Linear(hidden1_size, hidden2_size)
         self.fc3 = torch.nn.Linear(hidden2_size, hidden_size)
 
-        # self.fc4 = torch.nn.Linear(pedestrian_num * hidden_size, 512)
-        # self.fc5 = torch.nn.Linear(512, 400)
-        # self.fc6 = torch.nn.Linear(400, pedestrian_num * hidden_size)
-
     def forward(self, input_traces):
         # input_trace: (B, pedestrian_num, input_size(input_frame * 2))
-        # TODO: I think it's not beautiful enough
         hidden_list = []
 
-        # print torch.stack([input_traces[0,1],input_traces[0,10]],1)
-
-        for i in xrange(self.pedestrian_num):
+        for i in range(self.pedestrian_num):
             input_trace = input_traces[:, i, :]
             hidden_trace = F.relu(self.fc1(input_trace))
 
@@ -105,9 +90,6 @@ class EncoderNet(nn.Module):
             hidden_list.append(hidden_trace)
 
         hidden_traces = torch.stack(hidden_list, 1)
-
-        # print torch.stack([hidden_traces[0,1],hidden_traces[0,10]], 1)
-        # exit()
 
         return hidden_traces
 
@@ -131,10 +113,9 @@ class DecoderNet(nn.Module):
 
     def forward(self, target_traces):
         # target_trace: (B, pedestrian_num, 2)
-        # TODO: I think it's not beautiful enough
         hidden_list = []
 
-        for i in xrange(self.pedestrian_num):
+        for i in range(self.pedestrian_num):
             target_trace = target_traces[:, i, :]
             hidden_trace = F.relu(self.fc1(target_trace))
             hidden_trace = F.relu(self.fc2(hidden_trace))
@@ -168,7 +149,7 @@ class RegressionNet(nn.Module):
         # target_hidden_trace: (B, pedestrian_num, hidden_size)
 
         regression_list = []
-        for i in xrange(self.pedestrian_num):
+        for i in range(self.pedestrian_num):
             input_attn_hidden_trace = input_attn_hidden_traces[:, i]
             target_delta_trace = self.fc1(input_attn_hidden_trace)
 
@@ -181,7 +162,7 @@ class RegressionNet(nn.Module):
 
 
 class EncoderNetWithLSTM(nn.Module):
-    def __init__(self, pedestrian_num, input_size, hidden_size, use_gpu=True, n_layers=2):
+    def __init__(self, pedestrian_num, input_size, hidden_size, n_layers=2):
         super(EncoderNetWithLSTM, self).__init__()
         input_size = 2
         self.pedestrian_num = pedestrian_num
@@ -192,13 +173,12 @@ class EncoderNetWithLSTM(nn.Module):
 
         self.gru = nn.GRU(input_size, hidden_size, self.n_layers)
         self.lstm = nn.LSTM(input_size, hidden_size, self.n_layers)
-        self.use_gpu = use_gpu
 
     def forward(self, input_traces, hidden):
         # input_trace: (B, pedestrian_num, 2)
         next_hidden_list = []
         output_list = []
-        for i in xrange(self.pedestrian_num):
+        for i in range(self.pedestrian_num):
             input_trace = input_traces[:, i, :].unsqueeze(0)
             output, next_hidden = self.lstm(input_trace, (hidden[i][0], hidden[i][1]))
 
@@ -210,11 +190,6 @@ class EncoderNetWithLSTM(nn.Module):
         return output_traces, next_hidden_list
 
     def init_hidden(self, batch_size):
-        if self.use_gpu:
-            return [[Variable(torch.zeros(self.n_layers, batch_size, self.hidden_size)).cuda()
-                     for _ in xrange(2)]
-                    for _ in xrange(self.pedestrian_num)]
-        else:
-            return [[Variable(torch.zeros(self.n_layers, batch_size, self.hidden_size))
-                     for _ in xrange(2)]
-                    for _ in xrange(self.pedestrian_num)]
+        return [[torch.zeros(self.n_layers, batch_size, self.hidden_size, requires_grad=True).cuda()
+                 for _ in range(2)]
+                for _ in range(self.pedestrian_num)]
