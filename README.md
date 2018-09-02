@@ -58,6 +58,21 @@ where `GC_raw_data_path` is GC dataset we has downloaded, `GC_meta_data_path` is
 cd CIDNN
 python tools/create_dataset.py
 ```
+you will get this output:
+```
+pedestrian_data_list size:  12685
+frame_data_list size:  6001
+create data/GC_meta_data.json successfully!
+float32
+train_X: (11630, 20, 5, 2), train_Y: (11630, 20, 5, 2)
+test_X: (1306, 20, 5, 2), test_Y: (1306, 20, 5, 2)
+create data/GC.npz successfully!
+```
+It means that GC.npz has four part: `train_X`, `train_Y`, `test_X`, `test_Y`. `X` means observed trace, `Y` means predicted trace. 
+each data has structure like (batch_num, pedestrian_num, obv_frame / pred_frame, dim)
+
+for example, train_X(11630, 20, 5, 2) means there are 11630 samples, each sample has 20 pedestrians in the same 2d scene, we observe 5 frame.
+
 
 4. train CIDNN (all hyper-parameter in Class Model) and do whatever you want:
 ```
