@@ -25,7 +25,7 @@ If you find this useful, please cite our work as follows:
 |       GC [1]       | [BaiduYun](https://pan.baidu.com/s/1dD0EmXF) or [DropBox](https://www.dropbox.com/s/7y90xsxq0l0yv8d/cvpr2015_pedestrianWalkingPathDataset.rar?dl=0) |
 |      ETH [2]       | [website](http://www.vision.ee.ethz.ch/~stefpell/lta/index.html) |
 |      UCY [3]       | [website](https://graphics.cs.ucy.ac.cy/research/downloads/crowd-data) |
-|   CUHK Crowd [4]   | [website](http://www.ee.cuhk.edu.hk/~jshao/projects/CUHKcrowd_files/cuhk_crowd_dataset.htm) |
+|   CUHK Crowd [4]   | [webiste](http://www.ee.cuhk.edu.hk/~jshao/projects/CUHKcrowd_files/cuhk_crowd_dataset.htm) or [BaiduYun](cuhk_crowd.md) |
 | subway station [5] | [website](http://www.ee.cuhk.edu.hk/~xgwang/grandcentral.html) |
 
 **Update 2019.07.17**: Because the website of GC Dataset has been deleted, here we give the download link and decription of it.
